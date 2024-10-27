@@ -1,4 +1,4 @@
-def sum(a, b, c ):
+def sum(a, b, c):
     return a + b + c
 
 def printBoard(xState, zState):
@@ -15,7 +15,7 @@ def printBoard(xState, zState):
     print(f"--|---|---")
     print(f"{three} | {four} | {five} ")
     print(f"--|---|---")
-    print(f"{six} | {seven} | {eight} ") 
+    print(f"{six} | {seven} | {eight}")
 
 def checkWin(xState, zState):
     wins = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
@@ -27,24 +27,38 @@ def checkWin(xState, zState):
             print("O Won the match")
             return 0
     return -1
-    
+
 if __name__ == "__main__":
     xState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     zState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-    turn = 1 # 1 for X and 0 for O
+    turn = 1
     print("Welcome to Tic Tac Toe")
-    while(True):
+    while True:
         printBoard(xState, zState)
-        if(turn == 1):
+        if turn == 1:
             print("X's Chance")
-            value = int(input("Please enter a value: "))
-            xState[value] = 1
         else:
             print("O's Chance")
-            value = int(input("Please enter a value: "))
+        
+        while True:
+            try:
+                value = int(input("Please enter a value (0-8): "))
+                if value < 0 or value > 8:
+                    print("Invalid input. Please choose a number between 0 and 8.")
+                elif (xState[value] == 1 or zState[value] == 1):
+                    print("This block is already filled. Please choose another block.")
+                else:
+                    break
+            except ValueError:
+                print("Invalid input. Please enter a valid integer.")
+
+        if turn == 1:
+            xState[value] = 1
+        else:
             zState[value] = 1
+            
         cwin = checkWin(xState, zState)
-        if(cwin != -1):
+        if cwin != -1:
             print("Match over")
             break
         
