@@ -21,5 +21,5 @@ This project includes **two versions** of the game:
    pip install -r requirements.txt
    
 ### Run the GUI Version
-   python tic_tac_gui.py
+   python tic-tac-gui.py
 
