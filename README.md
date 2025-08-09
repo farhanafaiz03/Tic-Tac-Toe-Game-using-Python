@@ -10,8 +10,6 @@ A fun and interactive GUI-based Tic Tac Toe game built with Python and Tkinter.
    pip install -r requirements.txt
    
 ### Run the GUI Version
-
-   ```bash
    python tic-tac-gui.py
    
 
